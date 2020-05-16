@@ -10,7 +10,6 @@ class Player extends Phaser.GameObjects.Sprite {
         this.slaps = 0;
         this.blocks = 0;
 
-
         //add sfx
 
         //add animations?
@@ -22,7 +21,7 @@ class Player extends Phaser.GameObjects.Sprite {
     }
 
     //ADD METHODS (java pleb lingo) AS NEEDED HERE
-    
+
     resetResources()
     {
         this.slaps = 0;
@@ -43,7 +42,7 @@ class Player extends Phaser.GameObjects.Sprite {
         this.score += amount;
     }
 
-    //are getter and setter methods even needed when the object's varibles can just be accesed in the play scene?
+    //are getter and setter methods even needed when the object's fields can just be accesed in the play scene?
     // decSlaps()
     // {
         

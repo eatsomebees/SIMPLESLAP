@@ -5,19 +5,36 @@ class Play extends Phaser.Scene {
     }
 
     preload() {
+        //background
+        this.load.image('background', './assets/background.png');
+        //player sprites 
+        this.load.image('player1', './assets/player1.png');
+        this.load.image('player2', './assets/player2.png');
 
+        //players
+
+
+        //load spritesheets(if needed)
     }
 
     create() {
+
+        let centerX = game.config.width/2;
+        let centerY = game.config.height/2;
+
         //background music
 
         //animations
 
-        //tile sprites(if used)
+        //background
+        this.add.image(centerX, centerY, 'background');
 
         //spawn prefabs
+        this.p1 = new Player(this, centerX - 480, centerY - 240, 'player1').setOrigin(0,0);
+        this.p1 = new Player(this, centerX, centerY - 240, 'player2').setOrigin(0,0);
 
         //score display
+        
 
         //define keys
         //player 1

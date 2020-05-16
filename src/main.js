@@ -33,7 +33,7 @@ game.settings = {
     maxSlaps: 2,
     maxBlocks:2,
 
-    //player specific(moved to player prefab)
+    //player specific(move to player prefab)
    
 }
 
