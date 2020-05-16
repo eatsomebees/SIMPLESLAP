@@ -23,11 +23,18 @@ let config = {
 let game = new Phaser.Game(config);
 
 // DEFINE GAME SETTINGS AS NEEDED 
-//(most important things go in player prefab)
+//(mplayer specific things go in player prefab?)
 //maybe difficulty/complexity in here?
 //or would it be better to put everything in here? research before deciding
 game.settings = {
-    
+   
+    //universal(change to effect complexity)
+    firstTo: 3,
+    maxSlaps: 2,
+    maxBlocks:2,
+
+    //player specific(moved to player prefab)
+   
 }
 
 // reserve keyboard vars (selected for real world playability on one keyboard)
