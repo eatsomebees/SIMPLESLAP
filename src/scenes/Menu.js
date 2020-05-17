@@ -38,5 +38,7 @@ class Menu extends Phaser.Scene {
             this.scene.start("playScene");
         }
 
+        //IMPLEMENT COMPLEXITTY CHANGE HERE (if we get that far)
+
     }
 }
