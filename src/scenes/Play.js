@@ -137,22 +137,34 @@ class Play extends Phaser.Scene {
         //extra question, difference between just using 'if' statments and 'if else' in this case?
         //all cases TESTED to activate right, so if they're bugs they're inside the choice check if statements 
 
-        //extra if statement to try and improve preformance?
+        //extra if statement to try and improve preformance? (also makes the ending else statment work)
         if(this.p1Choice != null && this.p2Choice != null)
         {
+
+            //blocks going over max test(delete at end if ya want)
+            if(this.p1.blocks > game.settings.maxBlocks)
+            {
+                console.log("oh dear god has abandoned me 0");
+            }
+            if(this.p2.blocks > game.settings.maxBlocks)
+            {
+                console.log("oh dear god has abandoned me 1");
+            }
+
+
             //at max blocks report
             if(this.p1.blocks == game.settings.maxBlocks)
             {
                 //add another text object
             }
-            
-            else if(this.p2.blocks == game.settings.maxBlocks)
+            if(this.p2.blocks == game.settings.maxBlocks)
             {
                 //add another text object
             }
-            
+
+            //SCENARIO COMPARISON START
             //scenario 1, both slap
-            else if(this.p1Choice == "s" && this.p2Choice == "s")
+            if(this.p1Choice == "s" && this.p2Choice == "s")
             {
                 //test 
                 console.log("both slap!");
@@ -219,6 +231,8 @@ class Play extends Phaser.Scene {
                 console.log("oh dear god has abandoned me");
             }
                 
+            //UPDATE THE ON SCREEN TEXT TO MATCH CURRENT PLAYER FIELD VALUES
+
         }
         
         

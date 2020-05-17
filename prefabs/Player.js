@@ -42,6 +42,44 @@ class Player extends Phaser.GameObjects.Sprite {
         this.score += amount;
     }
 
+
+    //STATE CHECKING FUNCTIONS (p sure they work but can't officially test yet)
+    //returns true if player is able to slap, false otherwise
+    canSlap()
+    {
+        if(this.slaps > 0)
+        {
+            return true;
+        }
+
+        return false;
+    }
+    //returns true if player is able to block, false otherwise
+    canBlock()
+    {
+        if(this.blocks < game.settings.maxBlocks)
+        {
+            return true;
+        }
+
+        return false;
+
+    }
+    
+    //returns true if player is able to relaod, false otherwise
+    //will be implemented a lil differently in the game logic
+    canReload()
+    {
+        if(this.slaps < game.settings.maxSlaps)
+        {
+            return true;
+        }
+
+        return false;
+
+    }
+    
+
     //are getter and setter methods even needed when the object's fields can just be accesed in the play scene?
     // decSlaps()
     // {
