@@ -41,4 +41,4 @@ game.settings = {
 //player 1
 let keyQ, keyW, keyA;
 //player 2
-let keyP, keyO, keyL;
+let keyO, keyP, keyL;
