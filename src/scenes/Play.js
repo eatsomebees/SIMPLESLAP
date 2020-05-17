@@ -23,6 +23,9 @@ class Play extends Phaser.Scene {
         let centerX = game.config.width/2;
         let centerY = game.config.height/2;
         this.gameOver = false;
+        this.p1Choice = null;
+        this.p2Choice = null;
+
 
         //background music
 
@@ -84,6 +87,141 @@ class Play extends Phaser.Scene {
 
     update() {
 
+    //logic for checking if game is over goes here
+
+    //EVERYTHING below GOES IN A FAT WHILE LOOP THAT NEEDS TO GO HERE
+    //while(this.p1.score < game.settings.firstTo && this.p2.score < game.settings.firstTo){}
+
+        //fill the p1Choice and p2Choice variables
+        //TESTED!: variables fill correctly
+        /*
+        p1:
+        Q = SLAP
+        W = BLOCK
+        A = RELAOD
+        */
+        if(this.p1Choice == null)
+        {
+            if(Phaser.Input.Keyboard.JustDown(keyQ)){
+                this.p1Choice = "s";
+            }
+            if(Phaser.Input.Keyboard.JustDown(keyW)){
+                this.p1Choice = "b";
+            }
+            if(Phaser.Input.Keyboard.JustDown(keyA)){
+                this.p1Choice = "r";
+            }
+        }
+        /*
+        p2:
+        O = SLAP
+        P = BLOCK
+        L = RELAOD
+        */
+        if(this.p2Choice == null)
+        {
+            if(Phaser.Input.Keyboard.JustDown(keyO)){
+                this.p2Choice = "s";
+            }
+            if(Phaser.Input.Keyboard.JustDown(keyP)){
+                this.p2Choice = "b";
+            }
+            if(Phaser.Input.Keyboard.JustDown(keyL)){
+                this.p2Choice = "r";
+            }
+        }
+
+
+        //where the MAGIC happens (logic converted from my java protoype)
+        //sound and animations triggers go in here, when we have them
+        //extra question, difference between just using 'if' statments and 'if else' in this case?
+        //all cases TESTED to activate right, so if they're bugs they're inside the choice check if statements 
+
+        //extra if statement to try and improve preformance?
+        if(this.p1Choice != null && this.p2Choice != null)
+        {
+            //at max blocks report
+            if(this.p1.blocks == game.settings.maxBlocks)
+            {
+                //add another text object
+            }
+            
+            else if(this.p2.blocks == game.settings.maxBlocks)
+            {
+                //add another text object
+            }
+            
+            //scenario 1, both slap
+            else if(this.p1Choice == "s" && this.p2Choice == "s")
+            {
+                //test 
+                console.log("both slap!");
+                //MORE LOGIC GOES HERE
+            }
+            //scenario 2, p1: slap , p2: block
+            else if(this.p1Choice == "s" && this.p2Choice == "b")
+            {
+                //test 
+                console.log("p1: slap! p2: block.");
+                //MORE LOGIC GOES HERE
+            }
+            //scenario 3, p1: slap , p2: reload
+            else if(this.p1Choice == "s" && this.p2Choice == "r")
+            {
+                //test 
+                console.log("p1: slap! p2: reload.");
+                //MORE LOGIC GOES HERE
+            }
+            //scenario 4, both block
+            else if(this.p1Choice == "b" && this.p2Choice == "b")
+            {
+                //test 
+                console.log("both block.");
+                //MORE LOGIC GOES HERE
+            }
+            //scenario 5, p1: block , p2: reload
+            else if(this.p1Choice == "b" && this.p2Choice == "r")
+            {
+                //test 
+                console.log("p1: block. p2: reload.");
+                //MORE LOGIC GOES HERE
+            }
+            //scenario 6, p1: block , p2: slap
+            else if(this.p1Choice == "b" && this.p2Choice == "s")
+            {
+                //test 
+                console.log("p1: block. p2: slap!");
+                //MORE LOGIC GOES HERE
+            }
+            //scenario 7, p1: reload , p2: slap (same as 3 but swapped)
+            else if(this.p1Choice == "r" && this.p2Choice == "s")
+            {
+                //test 
+                console.log("p1: reload. p2: slap!");
+                //MORE LOGIC GOES HERE
+            }
+            //scenario 8, p1: reload , p2: block (same as 5 but swapped)
+            else if(this.p1Choice == "r" && this.p2Choice == "b")
+            {
+                //test 
+                console.log("p1: reload. p2: block.");
+                //MORE LOGIC GOES HERE
+            }
+            //scenario 9, both reload
+            else if(this.p1Choice == "r" && this.p2Choice == "r")
+            {
+                //test 
+                console.log("both reload");
+                //MORE LOGIC GOES HERE
+            }
+            else
+            {
+                console.log("oh dear god has abandoned me");
+            }
+                
+        }
+        
+        
     }
 
 }
