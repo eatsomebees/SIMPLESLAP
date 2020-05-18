@@ -304,7 +304,6 @@ class Play extends Phaser.Scene {
                     console.log("oh dear god has abandond me 2");
                 }
 
-                //MORE LOGIC GOES HERE
             }
             //scenario 3: p1: slap , p2: reload
             else if(this.p1Choice == "s" && this.p2Choice == "r")
