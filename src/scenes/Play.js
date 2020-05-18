@@ -355,7 +355,7 @@ class Play extends Phaser.Scene {
                 }
 
             }
-            //scenario 4: both block -> p1 blockthing, p2 blockthing (DONE, TESTING NEEDED)
+            //scenario 4: both block (DONE, TESTING NEEDED)
             else if(this.p1Choice == "b" && this.p2Choice == "b")
             {   
                 console.log("both block.");
@@ -385,57 +385,75 @@ class Play extends Phaser.Scene {
                 this.roundReset();
 
             }
-            //scenario 5: p1: block , p2: reload
+            //scenario 5: p1: block , p2: reload (DONE, TESTING NEEDED)
             else if(this.p1Choice == "b" && this.p2Choice == "r")
             {       
                 console.log("p1: block. p2: reload.");
                 //add STATUS text object 
 
-                //both fail -> reset p1's blocks, reset p2's blocks, 
+                //both fail -> reset p1's blocks, reset p2's blocks, round resets
                 if(!this.p1.canBlock() && !this.p2.canReload())
                 {
+                    //reset p1's blocks
+                    this.p1.blocks = 0;
+
+                    //reset p2's blocks
+                    this.p2.blocks = 0;
+
+                    //round resets
+                    this.roundReset();
 
                 } 
-                //p1 fail, p2: succ ->
+                //p1 fail, p2: succ -> reset p1's blocks, reset p2's blocks, inc p2's slaps, round resets
                 else if(!this.p1.canBlock() && this.p2.canReload())
                 {
-                    
+                    //reset p1's blocks
+                    this.p1.blocks = 0;
+
+                    //reset p2's blocks
+                    this.p2.blocks = 0;
+
+                    //inc p2's slaps
+                    this.p2.slaps++;
+
+                    //round resets
+                    this.roundReset();
                 }
-                //p1 succ, p2: fail ->
+                //p1 succ, p2: fail -> inc p1's blocks, reset p2's blocks, round resets
                 else if(this.p1.canBlock() && !this.p2.canReload())
                 {
+                    //inc p1's blocks
+                    this.p1.blocks++;
+
+                    //reset p2's blocks
+                    this.p2.blocks = 0;
+
+                    //round resets
+                    this.roundReset();
                     
                 }
-                //both succ ->
+                //both succ -> inc p1's blocks, inc p2's slaps, reset p2's blocks, round resets
                 else if(this.p1.canBlock() && this.p2.canReload())
                 {
-                    
+                    //inc p1's blocks
+                    this.p1.blocks++;
+
+                    //inc p2's slaps
+                    this.p2.slaps++;
+
+                    //reset p2's blocks
+                    this.p2.blocks = 0;
+
+                    //round resets
+                    this.roundReset();
+
                 }
                 else
                 {
                     console.log("oh dear god has abandond me 5");
                 }
 
-                //MORE LOGIC GOES HERE
             }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
             //scenario 6: p1: block , p2: slap
             else if(this.p1Choice == "b" && this.p2Choice == "s")
