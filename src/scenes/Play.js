@@ -388,6 +388,7 @@ class Play extends Phaser.Scene {
             //scenario 5: p1: block , p2: reload (DONE, TESTING NEEDED)
             else if(this.p1Choice == "b" && this.p2Choice == "r")
             {       
+                
                 console.log("p1: block. p2: reload.");
                 //add STATUS text object 
 
@@ -455,41 +456,274 @@ class Play extends Phaser.Scene {
 
             }
 
-            //scenario 6: p1: block , p2: slap
+            //scenario 6: p1: block , p2: slap [scenario 2 flipped] (DONE, TESTING NEEDED)
             else if(this.p1Choice == "b" && this.p2Choice == "s")
             {       
                 console.log("p1: block. p2: slap!");
                 //add STATUS text object 
 
-                //MORE LOGIC GOES HERE
+                //both fail -> reset p1's blocks, round resets
+                if(!this.p2.canSlap() && !this.p1.canBlock())
+                {
+                    console.log("p2 slapped w/ no slaps!");
+                    //add ANOUNCER text object 
+
+                    //reset p1's blocks
+                    this.p1.blocks == 0;
+
+                    //round resets
+                    this.roundReset();
+
+                }
+                //p2 fail, p1: succ -> inc p1's blocks, round resets
+                else if(!this.p2.canSlap() && this.p1.canBlock())
+                {
+                    console.log("p2 slapped w/ no slaps!");
+                    //add ANOUNCER text object 
+
+                    //inc p1's blocks
+                    this.p1.blocks++;
+
+                    //round resets
+                    this.roundReset();
+                }
+                //p2 succ, p1: fail -> p2 gets 2 points, recourses reset, round resets
+                else if(this.p2.canSlap() && !this.p1.canBlock())
+                {
+                    console.log("p2 landed a SUPER SLAP! (2 points)");
+                    //add ANOUNCER text object
+
+                    //p2 gets 2 points
+                    this.p2.score += 2;
+
+                    //resources reset
+                    this.p2.resetResources();
+                    this.p1.resetResources();
+
+                    //round resets
+                    this.roundReset();
+                }
+                //both succ -> dec p2's slaps, reset p1's blocks, round resets
+                else if(this.p2.canSlap() && this.p1.canBlock())
+                {
+                    console.log("p1 bocks the slap!");
+                    //add ANOUNCER text object
+
+                    //dec p2's slaps
+                    this.p2.slaps--;
+
+                    //reset p1's blocks
+                    this.p1.blocks = 0;
+
+                    //round resets
+                    this.roundReset();
+
+                }
+                else
+                {
+                    console.log("oh dear god has abandond me 6");
+                }
+
             }
-            //scenario 7: p1: reload , p2: slap (same as 3 but swapped)
+
+            //scenario 7: p1: reload , p2: slap [scenario 3 flipped] (DONE TESTING NEEDED)
             else if(this.p1Choice == "r" && this.p2Choice == "s")
             {          
                 console.log("p1: reload. p2: slap!");
                 //add STATUS text object 
 
-                //MORE LOGIC GOES HERE
+                //both fail -> reset p1's blocks, round resets
+                if(!this.p2.canSlap() && !this.p1.canReload())
+                {
+                    console.log("p2 slapped w/ no slaps!");
+                    //add ANOUNCER text object 
+
+                    //reset p1's blocks
+                    this.p1.blocks = 0;
+
+                    //round resets
+                    this.roundReset();
+
+                }
+                //p2 fail, p1: succ -> inc p1's slaps, round resets
+                else if(!this.p2.canSlap() && this.p1.canReload())
+                {
+                    console.log("p2 slapped w/ no slaps!");
+                    //add ANOUNCER text object 
+
+                    //inc p1's slaps
+                    this.p1.slaps++;
+
+                    //round resets
+                    this.roundReset();
+
+                }
+                //p2 succ, p1: fail -> both succ -> p2's gets point, round resets
+                else if(this.p2.canSlap())
+                {
+                    console.log("p2 lands a slap and gets a point!");
+                    //add ANOUNCER text object 
+
+                    //p2's gets point
+                    this.p2.score++;
+
+                    //round resets
+                    this.roundReset();
+                }
+                else
+                {
+                    console.log("oh dear god has abandond me 7");
+                }
+
             }
-            //scenario 8: p1: reload , p2: block (same as 5 but swapped)
+
+            //scenario 8: p1: reload , p2: block [scenario 5 flipped] (DONE TESTING NEEDED)
             else if(this.p1Choice == "r" && this.p2Choice == "b")
             {              
                 console.log("p1: reload. p2: block.");
                 //add STATUS text object 
 
-                //MORE LOGIC GOES HERE
+                //both fail -> reset p2's blocks, reset p1's blocks, round resets
+                if(!this.p2.canBlock() && !this.p1.canReload())
+                {
+                    //reset p2's blocks
+                    this.p2.blocks = 0;
+
+                    //reset p1's blocks
+                    this.p1.blocks = 0;
+
+                    //round resets
+                    this.roundReset();
+
+                } 
+                //p2 fail, p1: succ -> reset p2's blocks, reset p1's blocks, inc p1's slaps, round resets
+                else if(!this.p2.canBlock() && this.p1.canReload())
+                {
+                    //reset p2's blocks
+                    this.p2.blocks = 0;
+
+                    //reset p1's blocks
+                    this.p1.blocks = 0;
+
+                    //inc p1's slaps
+                    this.p1.slaps++;
+
+                    //round resets
+                    this.roundReset();
+                }
+                //p2 succ, p1: fail -> inc p2's blocks, reset p1's blocks, round resets
+                else if(this.p2.canBlock() && !this.p1.canReload())
+                {
+                    //inc p2's blocks
+                    this.p2.blocks++;
+
+                    //reset p1's blocks
+                    this.p1.blocks = 0;
+
+                    //round resets
+                    this.roundReset();
+                    
+                }
+                //both succ -> inc p2's blocks, inc p1's slaps, reset p1's blocks, round resets
+                else if(this.p2.canBlock() && this.p1.canReload())
+                {
+                    //inc p2's blocks
+                    this.p2.blocks++;
+
+                    //inc p1's slaps
+                    this.p1.slaps++;
+
+                    //reset p1's blocks
+                    this.p1.blocks = 0;
+
+                    //round resets
+                    this.roundReset();
+
+                }
+                else
+                {
+                    console.log("oh dear god has abandond me 8");
+                }
+
             }
-            //scenario 9: both reload
+
+            //scenario 9: both reload (DONE TESTING NEEDED)
             else if(this.p1Choice == "r" && this.p2Choice == "r")
             {
                 console.log("both reload");
                 //add STATUS text object 
 
-                //MORE LOGIC GOES HERE
+                //both fail -> reset p1's blocks, reset p2's blocks, round resets
+                if(!this.p1.canReload() && !this.p2.canReload())
+                {
+                    //reset p1's blocks
+                    this.p1.blocks = 0;
+
+                    //reset p2's blocks
+                    this.p2.blocks = 0;
+
+                    //round resets
+                    this.roundReset();
+
+                }
+                //p1 fail, p2: succ -> reset p1's blocks, reset p2's blocks, inc p2's slaps, round resets
+                else if(!this.p1.canReload() && this.p2.canReload())
+                {
+                    //reset p1's blocks
+                    this.p1.blocks = 0;
+
+                    //reset p2's blocks
+                    this.p2.blocks = 0;
+
+                    //inc p2's slaps
+                    this.p2.slaps++;
+
+                    //round resets
+                    this.roundReset();
+                }
+                //p1 succ, p2: fail -> reset p1's blocks, inc p1's slaps, reset p2's blocks, round resets
+                else if(this.p1.canReload() && !this.p2.canReload())
+                {
+                    //reset p1's blocks
+                    this.p1.blocks = 0;
+
+                    //inc p1's slaps
+                    this.p1.slaps++;
+
+                    //reset p2's blocks
+                    this.p2.blocks = 0;
+
+                    //round resets
+                    this.roundReset();
+
+                }
+                //both succ -> reset p1's blocks, inc p1's slaps, reset p2's blocks, inc p2's slaps, round resets
+                else if(this.p1.canReload() && this.p2.canReload())
+                {
+                    //reset p1's blocks
+                    this.p1.blocks = 0;
+
+                    //inc p1's slaps
+                    this.p1.slaps++;
+
+                    //reset p2's blocks
+                    this.p2.blocks = 0;
+
+                    //inc p2's slaps
+                    this.p2.slaps++;
+
+                    //round resets
+                    this.roundReset();
+                }
+                else
+                {
+                    console.log("oh dear god has abandond me 9");
+                }
+
             }
             else
             {
-                console.log("oh dear god has abandoned me");
+                console.log("oh dear god has abandoned you and it's time to start over bich boi");
             }
                 
             //UPDATE THE ON SCREEN TEXT TO MATCH CURRENT PLAYER FIELD VALUES
