@@ -354,15 +354,33 @@ class Play extends Phaser.Scene {
                     console.log("oh dear god has abandond me 3");
                 }
 
-
             }
-            //scenario 4: both block
+            //scenario 4: both block -> p1 blockthing, p2 blockthing (DONE, TESTING NEEDED)
             else if(this.p1Choice == "b" && this.p2Choice == "b")
             {   
                 console.log("both block.");
                 //add STATUS text object 
 
-                //MORE LOGIC GOES HERE
+                //p1 blockthing, inc or reset blocks
+                if(this.p1.canBlock())
+                {
+                    this.p1.blocks++;
+                }
+                else
+                {
+                    this.p1.blocks = 0;
+                }
+
+                //p2 blockthing, inc or reset blocks
+                if(this.p2.canBlock())
+                {
+                    this.p2.blocks++;
+                }
+                else
+                {
+                    this.p2.blocks = 0;
+                }
+
             }
             //scenario 5: p1: block , p2: reload
             else if(this.p1Choice == "b" && this.p2Choice == "r")
