@@ -57,7 +57,7 @@ class Play extends Phaser.Scene {
         //horis spacer left
         let spacerXL = 5;
         //horis spacer right
-        let spacerXR = 830;
+        let spacerXR = 825;
 
 
         //p1 display
@@ -134,8 +134,9 @@ class Play extends Phaser.Scene {
 
         //where the MAGIC happens (logic converted from my java protoype)
         //sound and animations triggers go in here, when we have them
-        //extra question, difference between just using 'if' statments and 'if else' in this case?
-        //all cases TESTED to activate right, so if they're bugs they're inside the choice check if statements 
+        //extra question, advantages between just using 'if' statments and 'if else' in this case?
+        //all 9 cases TESTED to activate correctly, so if there're bugs they're inside of the choice check if statements 
+        //implement the STATUS and ANOUNCER text objects after testing w/ console.log()
 
         //extra if statement to try and improve preformance? (also makes the ending else statment work)
         if(this.p1Choice != null && this.p2Choice != null)
@@ -153,77 +154,212 @@ class Play extends Phaser.Scene {
 
 
             //at max blocks report
-            if(this.p1.blocks == game.settings.maxBlocks)
+            if(!this.p1.canBlock())
             {
+                console.log("P1 can't slap!");
                 //add another text object
             }
-            if(this.p2.blocks == game.settings.maxBlocks)
+            if(!this.p2.canBlock())
             {
-                //add another text object
+                console.log("P2 can't slap!");
+                //add ANOUNCER text object       
             }
 
-            //SCENARIO COMPARISON START
-            //scenario 1, both slap
+            //SCENARIO COMPARISON START (round resets -> p1choice and p2choice set back to null, use 'roundReset()')
+
+            //scenario 1: both slap (DONE, TESTING NEEDED)
             if(this.p1Choice == "s" && this.p2Choice == "s")
             {
-                //test 
                 console.log("both slap!");
-                //MORE LOGIC GOES HERE
+                //add STATUS text object 
+
+                //both fail -> round resets
+                if(!this.p1.canSlap() && !this.p2.canSlap())
+                {
+                    console.log("BOTH OF Y'all DON'T HAVE SLAPS! AGAIN!");
+                    //add ANOUNCER text object  
+
+                    this.roundReset();
+
+                }
+                //p1 fail, p2: succ -> p2 get point, resources reset, round resets
+                else if(!this.p1.canSlap() && this.p2.canSlap())
+                {
+                    console.log("Player 2 gets a point!");
+                    //add ANOUNCER text object  
+
+                    //p2 get point
+                    this.p2.score++;
+
+                    //resources reset
+                    this.p1.resetResources();
+                    this.p2.resetResources();
+
+                    //round resets
+                    this.roundReset();
+
+
+                }
+                //p1 succ, p2: fail -> p1 gets point, resources reset, round resets
+                else if(this.p1.canSlap() && !this.p2.canSlap())
+                {
+                    console.log("Player 1 gets a point!");
+                    //add ANOUNCER text object 
+
+                    //p1 get point
+                    this.p1.score++;
+                    
+                    //resources reset
+                    this.p1.resetResources();
+                    this.p2.resetResources();
+
+                    //round resets
+                    this.roundReset();
+
+                }
+                //both succ -> p1 and p2 loose a slap, round resets
+                else if(this.p1.canSlap() && this.p2.canSlap())
+                {
+                    console.log("The slaps clash!");
+                    //add ANOUNCER text object 
+
+                    //p1 and p2 loose a slap
+                    this.p1.slaps--;
+                    this.p2.slaps--;
+                    
+                    //round resets
+                    this.roundReset();
+                }
+                else
+                {
+                    console.log("oh dear god has abandond me 1");
+                }
+
             }
-            //scenario 2, p1: slap , p2: block
+            //scenario 2: p1: slap , p2: block (DONE, TESTING NEEDED)
             else if(this.p1Choice == "s" && this.p2Choice == "b")
-            {
-                //test 
+            {   
                 console.log("p1: slap! p2: block.");
+                //add STATUS text object 
+
+                //both fail -> reset p2's blocks, round resets
+                if(!this.p1.canSlap() && !this.p2.canBlock())
+                {
+                    console.log("p1 slapped w/ no slaps!");
+                    //add ANOUNCER text object 
+
+                    //reset p2's blocks
+                    this.p2.blocks == 0;
+
+                    //round resets
+                    this.roundReset();
+
+                }
+                //p1 fail, p2: succ -> inc p2's blocks, round resets
+                else if(!this.p1.canSlap() && this.p2.canBlock())
+                {
+                    console.log("p1 slapped w/ no slaps!");
+                    //add ANOUNCER text object 
+
+                    //inc p2's blocks
+                    this.p2.blocks++;
+
+                    //round resets
+                    this.roundReset();
+                }
+                //p1 succ, p2: fail -> p1 gets 2 points, recourses reset, round resets
+                else if(this.p1.canSlap() && !this.p2.canBlock())
+                {
+                    console.log("p1 landed a SUPER SLAP! (2 points)");
+                    //add ANOUNCER text object
+
+                    //p1 gets 2 points
+                    this.p1.score += 2;
+
+                    //resources reset
+                    this.p1.resetResources();
+                    this.p2.resetResources();
+
+                    //round resets
+                    this.roundReset();
+                }
+                //both succ -> dec p1's slaps, reset p2's blocks, round resets
+                else if(this.p1.canSlap() && this.p2.canBlock())
+                {
+                    console.log("p2 bocks the slap!");
+                    //add ANOUNCER text object
+
+                    //dec p1's slaps
+                    this.p1.slaps--;
+
+                    //reset p2's blocks
+                    this.p2.blocks = 0;
+
+                    //round resets
+                    this.roundReset();
+
+                }
+                else
+                {
+                    console.log("oh dear god has abandond me 2");
+                }
+
                 //MORE LOGIC GOES HERE
             }
-            //scenario 3, p1: slap , p2: reload
+            //scenario 3: p1: slap , p2: reload
             else if(this.p1Choice == "s" && this.p2Choice == "r")
-            {
-                //test 
+            {    
                 console.log("p1: slap! p2: reload.");
+                //add STATUS text object 
+
                 //MORE LOGIC GOES HERE
             }
-            //scenario 4, both block
+            //scenario 4: both block
             else if(this.p1Choice == "b" && this.p2Choice == "b")
-            {
-                //test 
+            {   
                 console.log("both block.");
+                //add STATUS text object 
+
                 //MORE LOGIC GOES HERE
             }
-            //scenario 5, p1: block , p2: reload
+            //scenario 5: p1: block , p2: reload
             else if(this.p1Choice == "b" && this.p2Choice == "r")
-            {
-                //test 
+            {       
                 console.log("p1: block. p2: reload.");
+                //add STATUS text object 
+
                 //MORE LOGIC GOES HERE
             }
-            //scenario 6, p1: block , p2: slap
+            //scenario 6: p1: block , p2: slap
             else if(this.p1Choice == "b" && this.p2Choice == "s")
-            {
-                //test 
+            {       
                 console.log("p1: block. p2: slap!");
+                //add STATUS text object 
+
                 //MORE LOGIC GOES HERE
             }
-            //scenario 7, p1: reload , p2: slap (same as 3 but swapped)
+            //scenario 7: p1: reload , p2: slap (same as 3 but swapped)
             else if(this.p1Choice == "r" && this.p2Choice == "s")
-            {
-                //test 
+            {          
                 console.log("p1: reload. p2: slap!");
+                //add STATUS text object 
+
                 //MORE LOGIC GOES HERE
             }
-            //scenario 8, p1: reload , p2: block (same as 5 but swapped)
+            //scenario 8: p1: reload , p2: block (same as 5 but swapped)
             else if(this.p1Choice == "r" && this.p2Choice == "b")
-            {
-                //test 
+            {              
                 console.log("p1: reload. p2: block.");
+                //add STATUS text object 
+
                 //MORE LOGIC GOES HERE
             }
-            //scenario 9, both reload
+            //scenario 9: both reload
             else if(this.p1Choice == "r" && this.p2Choice == "r")
             {
-                //test 
                 console.log("both reload");
+                //add STATUS text object 
+
                 //MORE LOGIC GOES HERE
             }
             else
@@ -236,6 +372,12 @@ class Play extends Phaser.Scene {
         }
         
         
+    }
+
+    roundReset()
+    {
+        this.p1Choice = null;
+        this.p2Choice = null;
     }
 
 }
