@@ -305,13 +305,56 @@ class Play extends Phaser.Scene {
                 }
 
             }
-            //scenario 3: p1: slap , p2: reload
+            //scenario 3: p1: slap , p2: reload (DONE, TESTING NEEDED)
             else if(this.p1Choice == "s" && this.p2Choice == "r")
             {    
                 console.log("p1: slap! p2: reload.");
                 //add STATUS text object 
 
-                //MORE LOGIC GOES HERE
+                //both fail -> reset p2's blocks, round resets
+                if(!this.p1.canSlap() && !this.p2.canReload())
+                {
+                    console.log("p1 slapped w/ no slaps!");
+                    //add ANOUNCER text object 
+
+                    //reset p2's blocks
+                    this.p2.blocks = 0;
+
+                    //round resets
+                    this.roundReset();
+
+                }
+                //p1 fail, p2: succ -> inc p2's slaps, round resets
+                else if(!this.p1.canSlap() && this.p2.canReload())
+                {
+                    console.log("p1 slapped w/ no slaps!");
+                    //add ANOUNCER text object 
+
+                    //inc p2's slaps
+                    this.p2.slaps++;
+
+                    //round resets
+                    this.roundReset();
+
+                }
+                //p1 succ, p2: fail -> both succ -> p1's gets point, round resets
+                else if(this.p1.canSlap())
+                {
+                    console.log("p1 lands a slap and gets a point!");
+                    //add ANOUNCER text object 
+
+                    //p1's gets point
+                    this.p1.score++;
+
+                    //round resets
+                    this.roundReset();
+                }
+                else
+                {
+                    console.log("oh dear god has abandond me 3");
+                }
+
+
             }
             //scenario 4: both block
             else if(this.p1Choice == "b" && this.p2Choice == "b")
