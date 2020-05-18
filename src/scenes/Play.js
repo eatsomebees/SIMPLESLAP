@@ -89,7 +89,7 @@ class Play extends Phaser.Scene {
 
     update() {
 
-        if(!this.gameOver)
+        if(this.gameOver)
         {
             console.log("gameover");
         }
@@ -103,7 +103,7 @@ class Play extends Phaser.Scene {
     if(!this.gameOver)
     {
 
-        if(this.p1.score > game.settings.firstTo || this.p2.score > game.settings.firstTo){
+        if(this.p1.score >= game.settings.firstTo || this.p2.score >= game.settings.firstTo){
             this.gameOver = true;
         }
         //fill the p1Choice and p2Choice variables
@@ -168,17 +168,6 @@ class Play extends Phaser.Scene {
            }
 
 
-           //at max blocks report
-           if(!this.p1.canBlock())
-           {
-               console.log("P1 can't slap!");
-               //add ANOUNCER text object
-           }
-           if(!this.p2.canBlock())
-           {
-               console.log("P2 can't slap!");
-               //add ANOUNCER text object       
-           }
 
            //SCENARIO COMPARISON START (round resets -> p1choice and p2choice set back to null, use 'roundReset()')
            //scenario 1: both slap (DONE, TESTING NEEDED)
@@ -857,6 +846,18 @@ class Play extends Phaser.Scene {
                this.p2update = false;
            }
 
+            //at max blocks report
+            if(!this.p1.canBlock())
+            {
+                console.log("P1 can't block!");
+                //add ANOUNCER text object
+            }
+            if(!this.p2.canBlock())
+            {
+                console.log("P2 can't block!");
+                //add ANOUNCER text object       
+            }
+
     }
       
         
@@ -864,10 +865,13 @@ class Play extends Phaser.Scene {
    
 }
 
+
+
+    }
+
 roundReset()
 {
     this.p1Choice = null;
     this.p2Choice = null;
 }
-
 }
