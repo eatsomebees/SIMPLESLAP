@@ -103,9 +103,7 @@ class Play extends Phaser.Scene {
     if(!this.gameOver)
     {
 
-        if(this.p1.score >= game.settings.firstTo || this.p2.score >= game.settings.firstTo){
-            this.gameOver = true;
-        }
+        
         //fill the p1Choice and p2Choice variables
         //TESTED!: variables fill correctly
         /*
@@ -846,17 +844,25 @@ class Play extends Phaser.Scene {
                this.p2update = false;
            }
 
-            //at max blocks report
-            if(!this.p1.canBlock())
-            {
-                console.log("P1 can't block!");
-                //add ANOUNCER text object
+            if(this.p1.score >= game.settings.firstTo || this.p2.score >= game.settings.firstTo){
+                this.gameOver = true;
             }
-            if(!this.p2.canBlock())
-            {
-                console.log("P2 can't block!");
-                //add ANOUNCER text object       
+            else{
+
+                //at max blocks report
+                if(!this.p1.canBlock())
+                {
+                    console.log("P1 can't block!");
+                    //add ANOUNCER text object
+                }
+                if(!this.p2.canBlock())
+                {
+                    console.log("P2 can't block!");
+                    //add ANOUNCER text object       
+                }
+
             }
+            
 
     }
       
@@ -874,4 +880,5 @@ roundReset()
     this.p1Choice = null;
     this.p2Choice = null;
 }
+
 }
