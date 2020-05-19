@@ -217,13 +217,26 @@ class Play extends Phaser.Scene {
                //p1 fail, p2: succ -> p2 gets point, resources reset, round resets
                else if(!this.p1.canSlap() && this.p2.canSlap())
                {
-                   console.log("Player 2 gets a point!");
-                   this.announcer.text = "Player 2 gets a point!";
-                   this.sound.play('cymbal');
-                   //added announcer text object  
+                   if(this.p1.canBlock())
+                   {
+                    console.log("Player 2 gets a point!");
+                    this.announcer.text = "Player 2 gets a point!";
+                    this.sound.play('cymbal');
+                    //added announcer text object  
+ 
+                    //p2 get point
+                    this.p2.score++;
+                   }
+                   else{
+                    console.log("p2 landed a SUPER SLAP! (2 points)");
+                    this.announcer.text = "p2 landed a SUPER SLAP! (2 points)";
+                    this.sound.play('inception');
+                    //added announcer text object
 
-                   //p2 get point
-                   this.p2.score++;
+                    //p2 get 2 points
+                    this.p2.score += 2;
+                   }
+                   
 
                    //resources reset
                    this.p1.resetResources();
@@ -240,13 +253,27 @@ class Play extends Phaser.Scene {
                //p1 succ, p2: fail -> p1 gets point, resources reset, round resets
                else if(this.p1.canSlap() && !this.p2.canSlap())
                {
-                   console.log("Player 1 gets a point!");
-                   this.announcer.text = "Player 1 gets a point!";
-                   this.sound.play('cymbal');
-                   //added announcer text object 
+                if(this.p2.canBlock())
+                {
+                 console.log("Player 1 gets a point!");
+                 this.announcer.text = "Player 1 gets a point!";
+                 this.sound.play('cymbal');
+                 //added announcer text object  
 
-                   //p1 get point
-                   this.p1.score++;
+                 //p1 get point
+                 this.p1.score++;
+                }
+                else{
+                 console.log("p1 landed a SUPER SLAP! (2 points)");
+                 this.announcer.text = "p1 landed a SUPER SLAP! (2 points)";
+                 this.sound.play('inception');
+                 //added announcer text object
+
+                 //p1 get 2 points
+                 this.p1.score += 2;
+                }
+
+                  
                    
                    //resources reset
                    this.p1.resetResources();
@@ -415,13 +442,26 @@ class Play extends Phaser.Scene {
                //p1 succ, p2: fail -> both succ -> p1's gets point, resources reset, round resets
                else if(this.p1.canSlap())
                {
-                   console.log("p1 lands a slap and gets a point!");
-                   this.announcer.text = "p1 lands a slap and gets a point!";
-                   this.sound.play('cymbal');
-                   //added announcer text object 
+                if(this.p2.canBlock())
+                {
+                 console.log("Player 1 gets a point!");
+                 this.announcer.text = "Player 1 gets a point!";
+                 this.sound.play('cymbal');
+                 //added announcer text object  
 
-                   //p1's gets point
-                   this.p1.score++;
+                 //p2 get point
+                 this.p1.score++;
+                }
+                else{
+                 console.log("p1 landed a SUPER SLAP! (2 points)");
+                 this.announcer.text = "p1 landed a SUPER SLAP! (2 points)";
+                 this.sound.play('inception');
+                 //added announcer text object
+
+                 //p2 get 2 points
+                 this.p1.score += 2;
+                } 
+
 
                    //resources reset
                    this.p1.resetResources();
@@ -700,13 +740,27 @@ class Play extends Phaser.Scene {
                //p2 succ, p1: fail -> both succ -> p2's gets point, resources reset, round resets
                else if(this.p2.canSlap())
                {
-                   console.log("p2 lands a slap and gets a point!");
-                   this.announcer.text = "p2 lands a slap and gets a point!";
-                   this.sound.play('cymbal');
-                   //added announcer text object 
+                if(this.p1.canBlock())
+                {
+                 console.log("Player 2 gets a point!");
+                 this.announcer.text = "Player 2 gets a point!";
+                 this.sound.play('cymbal');
+                 //added announcer text object  
 
-                   //p2's gets point
-                   this.p2.score++;
+                 //p2 get point
+                 this.p2.score++;
+                }
+                else{
+                 console.log("p2 landed a SUPER SLAP! (2 points)");
+                 this.announcer.text = "p2 landed a SUPER SLAP! (2 points)";
+                 this.sound.play('inception');
+                 //added announcer text object
+
+                 //p2 get 2 points
+                 this.p2.score += 2;
+                }
+
+                   
 
                    //resources reset
                    this.p1.resetResources();
