@@ -57,18 +57,20 @@ class Play extends Phaser.Scene {
         //horis spacer left
         let spacerXL = 5;
         //horis spacer right
-        let spacerXR = 825;
+        let spacerXR = 775;
 
 
         //p1 display
         this.p1score = this.add.text(spacerXL, game.config.height-spacerY, "Score: " + this.p1.score, scoreConfig);
-        this.p1slaps = this.add.text(spacerXL, game.config.height-spacerY*2, "Slaps: " + this.p1.slaps + "/" + game.settings.maxSlaps, scoreConfig);
-        this.p1blocks = this.add.text(spacerXL, game.config.height-spacerY*3, "Blocks: " + this.p1.blocks + "/" + game.settings.maxBlocks, scoreConfig);
+        this.p1slaps = this.add.text(spacerXL, game.config.height-spacerY*2, "(\'Q\')Slaps: " + this.p1.slaps + "/" + game.settings.maxSlaps, scoreConfig);
+        this.p1blocks = this.add.text(spacerXL, game.config.height-spacerY*3, "(\'W\')Blocks: " + this.p1.blocks + "/" + game.settings.maxBlocks, scoreConfig);
+        this.p1Reload = this.add.text(spacerXL, game.config.height-spacerY*4, "(\'A\')reload >:( ", scoreConfig);
 
         //p2 display
         this.p2score = this.add.text(spacerXR, game.config.height-spacerY, "Score: " + this.p2.score, scoreConfig);
-        this.p2slaps = this.add.text(spacerXR, game.config.height-spacerY*2, "Slaps: " + this.p2.slaps + "/" + game.settings.maxSlaps, scoreConfig);
-        this.p2blocks = this.add.text(spacerXR, game.config.height-spacerY*3, "Blocks: " + this.p2.blocks + "/" + game.settings.maxBlocks, scoreConfig);
+        this.p2slaps = this.add.text(spacerXR, game.config.height-spacerY*2, "(\'O\')Slaps: " + this.p2.slaps + "/" + game.settings.maxSlaps, scoreConfig);
+        this.p2blocks = this.add.text(spacerXR, game.config.height-spacerY*3, "(\'P\')Blocks: " + this.p2.blocks + "/" + game.settings.maxBlocks, scoreConfig);
+        this.p2Reload = this.add.text(spacerXR, game.config.height-spacerY*4, "(\'L\')reload .__. ", scoreConfig);
         
         //first to *firstTo* display
         this.goal = this.add.text(game.config.width/2 - 40, 10, "first to " + game.settings.firstTo, scoreConfig);
@@ -964,10 +966,9 @@ class Play extends Phaser.Scene {
            //UPDATE THE ON SCREEN TEXT TO MATCH CURRENT PLAYER FIELD VALUES
            //p1 display update
            if(this.p1update)
-           {
                this.p1score.text = "Score: " + this.p1.score;
-               this.p1slaps.text = "Slaps: " + this.p1.slaps + "/" + game.settings.maxSlaps;
-               this.p1blocks.text = "Blocks: " + this.p1.blocks + "/" + game.settings.maxBlocks;
+               this.p1slaps.text = "(\'Q\')Slaps: " + this.p1.slaps + "/" + game.settings.maxSlaps;
+               this.p1blocks.text = "(\'W\')Blocks: " + this.p1.blocks + "/" + game.settings.maxBlocks;
                this.p1update = false;
            }
            
@@ -975,8 +976,8 @@ class Play extends Phaser.Scene {
            if(this.p2update)
            {
                this.p2score.text = "Score: " + this.p2.score;
-               this.p2slaps.text = "Slaps: " + this.p2.slaps + "/" + game.settings.maxSlaps;
-               this.p2blocks.text = "Blocks: " + this.p2.blocks + "/" + game.settings.maxBlocks;
+               this.p2slaps.text = "(\'O\')Slaps: " + this.p2.slaps + "/" + game.settings.maxSlaps;
+               this.p2blocks.text = "(\'P\')Blocks: " + this.p2.blocks + "/" + game.settings.maxBlocks;
                this.p2update = false;
            }
 
@@ -1017,14 +1018,14 @@ class Play extends Phaser.Scene {
    
 }
 
-
-
-    }
-
 roundReset()
 {
     this.p1Choice = null;
     this.p2Choice = null;
 }
 
-}
+    }
+
+
+
+
