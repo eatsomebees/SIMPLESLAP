@@ -78,6 +78,10 @@ class Play extends Phaser.Scene {
         //status display
         this.status = this.add.text(game.config.width/2, game.config.height-spacerY*2, "", scoreConfig).setOrigin(0.5);
 
+        //win display
+        this.winner = this.add.text(centerX, centerY, "", scoreConfig).setOrigin(0.5);
+        this.message = this.add.text(centerX, centerY, "", scoreConfig).setOrigin(0.5);
+
 
         //define keys
         //player 1
@@ -98,14 +102,14 @@ class Play extends Phaser.Scene {
             console.log("gameover");
             if(this.p1.score > this.p2.score)
             {
-                this.status.text = "p1 wins!";
+                this.winner.text = "p1 wins!";
             }
             else
             {
-                this.status.text = "p2 wins!";
+                this.winner.text = "p2 wins!";
             }
 
-            this.announcer.text = "press \'Q\' to play again or \'P\' to return to menu.";
+            this.message.text = "press \'Q\' to play again or \'P\' to return to menu.";
             if (Phaser.Input.Keyboard.JustDown(keyQ)) {
                 this.scene.restart();
             }
@@ -136,12 +140,15 @@ class Play extends Phaser.Scene {
        {
            if(Phaser.Input.Keyboard.JustDown(keyQ)){
                this.p1Choice = "s";
+               this.sound.play('select1');
            }
            if(Phaser.Input.Keyboard.JustDown(keyW)){
                this.p1Choice = "b";
+               this.sound.play('select1');
            }
            if(Phaser.Input.Keyboard.JustDown(keyA)){
                this.p1Choice = "r";
+               this.sound.play('select1');
            }
        }
        /*
@@ -154,12 +161,15 @@ class Play extends Phaser.Scene {
        {
            if(Phaser.Input.Keyboard.JustDown(keyO)){
                this.p2Choice = "s";
+               this.sound.play('select2');
            }
            if(Phaser.Input.Keyboard.JustDown(keyP)){
                this.p2Choice = "b";
+               this.sound.play('select2');
            }
            if(Phaser.Input.Keyboard.JustDown(keyL)){
                this.p2Choice = "r";
+               this.sound.play('select2');
            }
        }
 
@@ -209,6 +219,7 @@ class Play extends Phaser.Scene {
                {
                    console.log("Player 2 gets a point!");
                    this.announcer.text = "Player 2 gets a point!";
+                   this.sound.play('cymbal');
                    //added announcer text object  
 
                    //p2 get point
@@ -231,6 +242,7 @@ class Play extends Phaser.Scene {
                {
                    console.log("Player 1 gets a point!");
                    this.announcer.text = "Player 1 gets a point!";
+                   this.sound.play('cymbal');
                    //added announcer text object 
 
                    //p1 get point
@@ -251,6 +263,7 @@ class Play extends Phaser.Scene {
                {
                    console.log("The slaps clash!");
                    this.announcer.text = "The slaps clash!";
+                   this.sound.play('clash');
                    //added announcer text object 
 
                    //p1 and p2 loose a slap
@@ -312,6 +325,7 @@ class Play extends Phaser.Scene {
                {
                    console.log("p1 landed a SUPER SLAP! (2 points)");
                    this.announcer.text = "p1 landed a SUPER SLAP! (2 points)";
+                   this.sound.play('inception');
                    //added announcer text object
 
                    //p1 gets 2 points
@@ -332,6 +346,7 @@ class Play extends Phaser.Scene {
                {
                    console.log("p2 bocks the slap!");
                    this.announcer.text = "p2 bocks the slap!";
+                   this.sound.play('duck');
                    //added announcer text object
 
                    //dec p1's slaps
@@ -385,6 +400,7 @@ class Play extends Phaser.Scene {
 
                    //inc p2's slaps
                    this.p2.slaps++;
+                   this.sound.play('guncock');
 
                    //reset p2's blocks
                    this.p2.blocks = 0;
@@ -401,6 +417,7 @@ class Play extends Phaser.Scene {
                {
                    console.log("p1 lands a slap and gets a point!");
                    this.announcer.text = "p1 lands a slap and gets a point!";
+                   this.sound.play('cymbal');
                    //added announcer text object 
 
                    //p1's gets point
@@ -502,6 +519,7 @@ class Play extends Phaser.Scene {
 
                    //inc p2's slaps
                    this.p2.slaps++;
+                   this.sound.play('guncock');
 
                    //round resets
                    this.roundReset();
@@ -533,6 +551,7 @@ class Play extends Phaser.Scene {
 
                    //inc p2's slaps
                    this.p2.slaps++;
+                   this.sound.play('guncock');
 
                    //reset p2's blocks
                    this.p2.blocks = 0;
@@ -594,6 +613,7 @@ class Play extends Phaser.Scene {
                {
                    console.log("p2 landed a SUPER SLAP! (2 points)");
                    this.announcer.text = "p2 landed a SUPER SLAP! (2 points)";
+                   this.sound.play('inception');
                    //added announcer text object
 
                    //p2 gets 2 points
@@ -614,6 +634,7 @@ class Play extends Phaser.Scene {
                {
                    console.log("p1 bocks the slap!");
                    this.announcer.text = "p1 bocks the slap!";
+                   this.sound.play('duck');
                    //added announcer text object
 
                    //dec p2's slaps
@@ -668,6 +689,7 @@ class Play extends Phaser.Scene {
 
                    //inc p1's slaps
                    this.p1.slaps++;
+                   this.sound.play('guncock');
 
                    //round resets
                    this.roundReset();
@@ -680,6 +702,7 @@ class Play extends Phaser.Scene {
                {
                    console.log("p2 lands a slap and gets a point!");
                    this.announcer.text = "p2 lands a slap and gets a point!";
+                   this.sound.play('cymbal');
                    //added announcer text object 
 
                    //p2's gets point
@@ -738,6 +761,7 @@ class Play extends Phaser.Scene {
 
                    //inc p1's slaps
                    this.p1.slaps++;
+                   this.sound.play('guncock');
 
                    //round resets
                    this.roundReset();
@@ -769,6 +793,7 @@ class Play extends Phaser.Scene {
 
                    //inc p1's slaps
                    this.p1.slaps++;
+                   this.sound.play('guncock');
 
                    //reset p1's blocks
                    this.p1.blocks = 0;
@@ -821,6 +846,7 @@ class Play extends Phaser.Scene {
 
                    //inc p2's slaps
                    this.p2.slaps++;
+                   this.sound.play('guncock');
 
                    //round resets
                    this.roundReset();
@@ -836,6 +862,7 @@ class Play extends Phaser.Scene {
 
                    //inc p1's slaps
                    this.p1.slaps++;
+                   this.sound.play('guncock');
 
                    //reset p2's blocks
                    this.p2.blocks = 0;
@@ -861,6 +888,7 @@ class Play extends Phaser.Scene {
 
                    //inc p2's slaps
                    this.p2.slaps++;
+                   this.sound.play('guncock');
 
                    //round resets
                    this.roundReset();
@@ -899,6 +927,7 @@ class Play extends Phaser.Scene {
            }
 
             if(this.p1.score >= game.settings.firstTo || this.p2.score >= game.settings.firstTo){
+                this.sound.play('winner');
                 this.gameOver = true;
             }
             else{

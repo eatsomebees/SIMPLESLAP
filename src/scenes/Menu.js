@@ -5,6 +5,26 @@ class Menu extends Phaser.Scene {
     }
 
     preload() {
+        // LOAD AUDIO
+        //slap landed
+        this.load.audio('cymbal', './assets/cymbal.wav');
+        //reload
+        this.load.audio('guncock', './assets/guncock.wav');
+        //superslap landed
+        this.load.audio('inception', './assets/inception.wav');
+        //block
+        this.load.audio('duck', './assets/rubberduck.wav');
+        //the slaps clash
+        this.load.audio('clash', './assets/slapclash.wav');
+
+
+        //p1 locked in
+        this.load.audio('select1', './assets/select1.wav');
+        //p2 locked in
+        this.load.audio('select2', './assets/select2.wav');
+        //winner
+        this.load.audio('slowclap', './assets/slowclap.wav');
+        
 
     }
 
