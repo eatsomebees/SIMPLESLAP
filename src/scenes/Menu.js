@@ -42,10 +42,26 @@ class Menu extends Phaser.Scene {
             },
             fixedWidth: 0
         }
+        //title display
+        let titleConfig = {
+            fontFamily: 'Roboto Condensed',
+            fontSize: '35px',
+            backgroundColor: '#FFFFFF',
+            color: '#000000',
+            align: 'right',
+            padding: {
+                top: 5,
+                bottom: 5,
+            },
+            fixedWidth: 0
+        }
 
         let centerX = game.config.width/2;
         let centerY = game.config.height/2;
         let spacerY = 45;
+
+        //title
+        this.add.text(centerX, centerY-spacerY*3, ' SIMP. SLAP! ', titleConfig).setOrigin(0.5);
 
         //start button
         this.add.text(centerX, centerY-spacerY, ' Press \'Q\' to Start ', menuConfig).setOrigin(0.5);
