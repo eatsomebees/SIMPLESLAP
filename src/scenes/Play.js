@@ -79,7 +79,7 @@ class Play extends Phaser.Scene {
         this.status = this.add.text(game.config.width/2, game.config.height-spacerY*2, "", scoreConfig).setOrigin(0.5);
 
         //win display
-        this.winner = this.add.text(centerX, centerY, "", scoreConfig).setOrigin(0.5);
+        this.winner = this.add.text(centerX, centerY-spacerY, "", scoreConfig).setOrigin(0.5);
         this.message = this.add.text(centerX, centerY, "", scoreConfig).setOrigin(0.5);
 
 
