@@ -11,8 +11,6 @@ class Play extends Phaser.Scene {
         this.load.image('player1', './assets/player1.png');
         this.load.image('player2', './assets/player2.png');
 
-        //players
-
 
         //load spritesheets(if needed)
     }
@@ -173,11 +171,11 @@ class Play extends Phaser.Scene {
            //blocks going over max test(delete at end if ya want)
            if(this.p1.blocks > game.settings.maxBlocks)
            {
-               console.log("oh dear god has abandoned me 0");
+               console.log("oh dear god has abandoned me p1 bs");
            }
            if(this.p2.blocks > game.settings.maxBlocks)
            {
-               console.log("oh dear god has abandoned me 1");
+               console.log("oh dear god has abandoned p2 bs");
            }
 
 
@@ -424,16 +422,20 @@ class Play extends Phaser.Scene {
                console.log("both block.");
                this.status.text = "both block.";
                //added STATUS text object 
+               this.anouncer.text = "...";
+               //added ANOUNCER text object
 
                //p1 blockthing, inc or reset blocks
                if(this.p1.canBlock())
                {
+
                    this.p1.blocks++;
 
                    this.p1update = true;
                }
                else
                {
+              
                    this.p1.blocks = 0;
 
                    this.p1update = true;
@@ -464,11 +466,13 @@ class Play extends Phaser.Scene {
                console.log("p1: blocks. p2: reload.");
                this.status.text = "p1: blocks. p2: reload.";
                //added STATUS text object 
+               this.anouncer.text = "...";
+               //added ANOUNCER text object
 
                //both fail -> reset p1's blocks, reset p2's blocks, round resets
                if(!this.p1.canBlock() && !this.p2.canReload())
                {
-                   //reset p1's blocks
+                    //reset p1's blocks
                    this.p1.blocks = 0;
 
                    //reset p2's blocks
@@ -698,6 +702,8 @@ class Play extends Phaser.Scene {
                console.log("p1: reload. p2: blocks.");
                this.status.text = "p1: reload. p2: blocks.";
                //added STATUS text object 
+               this.anouncer.text = "...";
+               //added ANOUNCER text object 
 
                //both fail -> reset p2's blocks, reset p1's blocks, round resets
                if(!this.p2.canBlock() && !this.p1.canReload())
@@ -894,14 +900,14 @@ class Play extends Phaser.Scene {
                 //at max blocks report
                 if(!this.p1.canBlock())
                 {
-                    console.log("P1 can't blocks!");
+                    console.log("P1 can't block!");
                     this.anouncer.text = "P1 can't blocks!";
                     //added ANOUNCER text object
                 }
                 if(!this.p2.canBlock())
                 {
                     console.log("P2 can't blocks!");
-                    this.anouncer.text = "P2 can't blocks!";
+                    this.anouncer.text = "P2 can't block!";
                     //added ANOUNCER text object       
                 }
 
