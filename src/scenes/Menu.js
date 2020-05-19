@@ -28,19 +28,19 @@ class Menu extends Phaser.Scene {
         let spacerY = 45;
 
         //start button
-        this.add.text(centerX, centerY-spacerY, ' Press \'P\' to Start ', menuConfig).setOrigin(0.5);
-        this.add.text(centerX, centerY, ' Press \'Q\' for simp mode ', menuConfig).setOrigin(0.5);
+        this.add.text(centerX, centerY-spacerY, ' Press \'Q\' to Start ', menuConfig).setOrigin(0.5);
+        this.add.text(centerX, centerY, ' Press \'P\' for simp. mode ', menuConfig).setOrigin(0.5);
 
         //define keys
-        keyP = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.P);
         keyQ = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Q);
+        keyP = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.P);
     }
 
     update() {
-        if (Phaser.Input.Keyboard.JustDown(keyP)) {
+        if (Phaser.Input.Keyboard.JustDown(keyQ)) {
             this.scene.start("playScene");
         }
-        if (Phaser.Input.Keyboard.JustDown(keyQ)) {
+        if (Phaser.Input.Keyboard.JustDown(keyP)) {
             //simp mode
             game.settings = {
                 firstTo: 1,

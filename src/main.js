@@ -2,7 +2,7 @@
 William Gadd
 Kenice Washington
 
-Title: SIMP SLAP prototype
+Title: SIMP. SLAP prototype
 
 Date Completed: 
 
