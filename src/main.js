@@ -17,7 +17,7 @@ let config = {
     },
 
     //REMEMBER TO ADD NEW SCENES HERE
-    scene: [ Menu, Play ] 
+    scene: [ Menu, Play, How ] 
   }
 
 let game = new Phaser.Game(config);
@@ -44,3 +44,4 @@ game.settings = {
 let keyQ, keyW, keyA;
 //player 2
 let keyO, keyP, keyL;
+let keyM, keyH;

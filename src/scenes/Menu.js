@@ -50,10 +50,13 @@ class Menu extends Phaser.Scene {
         //start button
         this.add.text(centerX, centerY-spacerY, ' Press \'Q\' to Start ', menuConfig).setOrigin(0.5);
         this.add.text(centerX, centerY, ' Press \'P\' for simp. mode ', menuConfig).setOrigin(0.5);
+        this.add.text(centerX, 370, ' Press \'H\' to Learn How to Play ', menuConfig).setOrigin(0.5);
 
         //define keys
         keyQ = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Q);
         keyP = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.P);
+        keyH = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.H);
+
     }
 
     update() {
@@ -68,6 +71,9 @@ class Menu extends Phaser.Scene {
                 maxBlocks:1,
             }
             this.scene.start("playScene");
+        }
+        if (Phaser.Input.Keyboard.JustDown(keyH)) {
+            this.scene.start("howScene");
         }
 
         //IMPLEMENT COMPLEXITTY CHANGE HERE (if we get that far)
