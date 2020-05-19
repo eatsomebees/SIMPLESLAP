@@ -936,7 +936,7 @@ class Play extends Phaser.Scene {
                 if(!this.p1.canBlock())
                 {
                     console.log("P1 can't block!");
-                    this.announcer.text = "P1 can't blocks!";
+                    this.announcer.text = "P1 can't block!";
                     //added announcer text object
                 }
                 if(!this.p2.canBlock())
