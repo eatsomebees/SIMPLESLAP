@@ -5,6 +5,15 @@ class Menu extends Phaser.Scene {
     }
 
     preload() {
+        // load audio
+        this.load.audio('cymbal', './assets/cymbal.wav');
+        this.load.audio('guncock', './assets/guncock.wav');
+        this.load.audio('inception', './assets/inception.wav');
+        this.load.audio('duck', './assets/rubberduck.wav');
+        this.load.audio('select1', './assets/select1.wav');
+        this.load.audio('select2', './assets/select2.wav');
+        this.load.audio('slowclap', './assets/slowclap.wav');
+
 
     }
 

@@ -26,6 +26,8 @@ let game = new Phaser.Game(config);
 //(mplayer specific things go in player prefab?)
 //maybe difficulty/complexity in here?
 //or would it be better to put everything in here? research before deciding
+//ADD SUPEER SLAP AND BLOCK REDUCTION VARIABLES IF MAKING BIG BOI MODE
+//ADD TIMER VARIABLE
 game.settings = {
    
     //universal(change to effect complexity)
