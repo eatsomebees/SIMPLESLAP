@@ -927,7 +927,7 @@ class Play extends Phaser.Scene {
            }
 
             if(this.p1.score >= game.settings.firstTo || this.p2.score >= game.settings.firstTo){
-                this.sound.play('winner');
+                this.sound.play('slowclap');
                 this.gameOver = true;
             }
             else{
