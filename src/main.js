@@ -2,7 +2,7 @@
 William Gadd
 Kenice Washington
 
-Title: SIMP SLAP prototype
+Title: SIMP. SLAP prototype
 
 Date Completed: 
 
@@ -33,7 +33,7 @@ game.settings = {
     maxSlaps: 2,
     maxBlocks:2,
 
-    //player specific(move to player prefab)
+    //player specific(moved to player prefab)
    
 }
 
