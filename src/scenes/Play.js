@@ -181,6 +181,7 @@ class Play extends Phaser.Scene {
        //extra question, advantages between just using 'if' statments and 'if else' in this case?
        //all 9 cases TESTED to activate correctly, so if there're bugs they're inside of the choice check if statements 
        //remove console.log() stuff later?
+       //BETTER SOLUTION: make three methods in the player prefab, pass in opponent's choice to all, move if statements inside.
 
        //extra if statement to try and improve preformance? (also makes the ending else statment work)
        if(this.p1Choice != null && this.p2Choice != null)
