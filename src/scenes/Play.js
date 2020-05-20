@@ -537,9 +537,12 @@ class Play extends Phaser.Scene {
                //both fail -> reset p1's blocks, reset p2's blocks, round resets
                if(!this.p1.canBlock() && !this.p2.canReload())
                {
+                    this.announcer.text = "p2 TAUNTS!";
+                    //added announcer text object
+                    
                     //reset p1's blocks
                    this.p1.blocks = 0;
-
+                   
                    //reset p2's blocks
                    this.p2.blocks = 0;
 
@@ -574,6 +577,9 @@ class Play extends Phaser.Scene {
                {
                    //inc p1's blocks
                    this.p1.blocks++;
+
+                   this.announcer.text = "p2 TAUNTS!"
+                   //added announcer text object
 
                    //reset p2's blocks
                    this.p2.blocks = 0;
@@ -712,6 +718,7 @@ class Play extends Phaser.Scene {
                    console.log("p2 slapped w/ no slaps!");
                    this.announcer.text = "p2 slapped w/ no slaps!";
                    //added announcer text object 
+                   
 
                    //reset p1's blocks
                    this.p1.blocks = 0;
@@ -796,6 +803,9 @@ class Play extends Phaser.Scene {
                    //reset p2's blocks
                    this.p2.blocks = 0;
 
+                   this.announcer.text = "p1 TAUNTS!"
+                   //added announcer text object
+
                    //reset p1's blocks
                    this.p1.blocks = 0;
 
@@ -830,6 +840,9 @@ class Play extends Phaser.Scene {
                {
                    //inc p2's blocks
                    this.p2.blocks++;
+
+                   this.announcer.text = "p1 TAUNTS!"
+                   //added announcer text object
 
                    //reset p1's blocks
                    this.p1.blocks = 0;
@@ -874,12 +887,16 @@ class Play extends Phaser.Scene {
                console.log("both reload");
                this.status.text = "both reload";
                //added STATUS text object 
+               
 
                //both fail -> reset p1's blocks, reset p2's blocks, round resets
                if(!this.p1.canReload() && !this.p2.canReload())
                {
                    //reset p1's blocks
                    this.p1.blocks = 0;
+
+                   this.announcer.text = "You TAUNT eachother. dramatic.";
+                   //added ANNOUNCER text object
 
                    //reset p2's blocks
                    this.p2.blocks = 0;
@@ -894,6 +911,10 @@ class Play extends Phaser.Scene {
                //p1 fail, p2: succ -> reset p1's blocks, reset p2's blocks, inc p2's slaps, round resets
                else if(!this.p1.canReload() && this.p2.canReload())
                {
+
+                   this.announcer.text = "p1 TAUNTS! (for the worse)";
+                   //added ANNOUNCER text object
+
                    //reset p1's blocks
                    this.p1.blocks = 0;
 
@@ -913,6 +934,9 @@ class Play extends Phaser.Scene {
                //p1 succ, p2: fail -> reset p1's blocks, inc p1's slaps, reset p2's blocks, round resets
                else if(this.p1.canReload() && !this.p2.canReload())
                {
+                   this.announcer.text = "p2 TAUNTS! (for the worse)";
+                   //added ANNOUNCER text object
+
                    //reset p1's blocks
                    this.p1.blocks = 0;
 
@@ -933,6 +957,9 @@ class Play extends Phaser.Scene {
                //both succ -> reset p1's blocks, inc p1's slaps, reset p2's blocks, inc p2's slaps, round resets
                else if(this.p1.canReload() && this.p2.canReload())
                {
+                   this.announcer.text = "...";
+                   //added ANNOUNCER text object
+
                    //reset p1's blocks
                    this.p1.blocks = 0;
 
