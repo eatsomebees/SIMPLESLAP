@@ -24,6 +24,8 @@ class Menu extends Phaser.Scene {
         this.load.audio('select2', './assets/select2.wav');
         //winner
         this.load.audio('slowclap', './assets/slowclap.wav');
+        //taunt laugh
+        this.load.audio('haha', './assets/haha.wav');
         
 
     }

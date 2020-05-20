@@ -538,6 +538,7 @@ class Play extends Phaser.Scene {
                if(!this.p1.canBlock() && !this.p2.canReload())
                {
                     this.announcer.text = "p2 TAUNTS!";
+                    this.sound.play('haha');
                     //added announcer text object
                     
                     //reset p1's blocks
@@ -579,6 +580,7 @@ class Play extends Phaser.Scene {
                    this.p1.blocks++;
 
                    this.announcer.text = "p2 TAUNTS!"
+                   this.sound.play('haha');
                    //added announcer text object
 
                    //reset p2's blocks
@@ -804,6 +806,7 @@ class Play extends Phaser.Scene {
                    this.p2.blocks = 0;
 
                    this.announcer.text = "p1 TAUNTS!"
+                   this.sound.play('haha');
                    //added announcer text object
 
                    //reset p1's blocks
@@ -842,6 +845,7 @@ class Play extends Phaser.Scene {
                    this.p2.blocks++;
 
                    this.announcer.text = "p1 TAUNTS!"
+                   this.sound.play('haha');
                    //added announcer text object
 
                    //reset p1's blocks
