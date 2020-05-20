@@ -77,6 +77,11 @@ class Menu extends Phaser.Scene {
 
     update() {
         if (Phaser.Input.Keyboard.JustDown(keyQ)) {
+            game.settings = {
+                firstTo: 3,
+                maxSlaps: 2,
+                maxBlocks:2,
+            }
             this.scene.start("playScene");
         }
         if (Phaser.Input.Keyboard.JustDown(keyP)) {
