@@ -63,11 +63,11 @@ class Menu extends Phaser.Scene {
         let spacerY = 45;
 
         //title
-        this.add.text(centerX, centerY-spacerY*3, ' SIMP. SLAP! ', titleConfig).setOrigin(0.5);
+        this.add.text(centerX, centerY-spacerY*3, ' SLAP! ', titleConfig).setOrigin(0.5);
 
         //start button
         this.add.text(centerX, centerY-spacerY, ' Press \'Q\' to Start ', menuConfig).setOrigin(0.5);
-        this.add.text(centerX, centerY, ' Press \'P\' for simp. mode ', menuConfig).setOrigin(0.5);
+        this.add.text(centerX, centerY, ' Press \'P\' for simple mode ', menuConfig).setOrigin(0.5);
         this.add.text(centerX, 370, ' Press \'H\' to Learn How to Play ', menuConfig).setOrigin(0.5);
 
         //define keys
@@ -87,7 +87,7 @@ class Menu extends Phaser.Scene {
             this.scene.start("playScene");
         }
         if (Phaser.Input.Keyboard.JustDown(keyP)) {
-            //simp mode
+            //simple mode
             game.settings = {
                 firstTo: 1,
                 maxSlaps: 1,
