@@ -2,7 +2,7 @@
 William Gadd
 Kenice Washington
 
-Title: SIMP. SLAP prototype
+Title: simple SLAP!
 
 Date Completed: 
 
@@ -17,13 +17,13 @@ let config = {
     },
 
     //REMEMBER TO ADD NEW SCENES HERE
-    scene: [ Menu, Play, How ] 
+    scene: [ Menu, Play, How, Credits ] 
   }
 
 let game = new Phaser.Game(config);
 
 // DEFINE GAME SETTINGS AS NEEDED 
-//(mplayer specific things go in player prefab?)
+//(player specific things go in player prefab?)
 //maybe difficulty/complexity in here?
 //or would it be better to put everything in here? research before deciding
 //ADD SUPEER SLAP AND BLOCK REDUCTION VARIABLES IF MAKING BIG BOI MODE

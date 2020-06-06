@@ -16,8 +16,6 @@ class Menu extends Phaser.Scene {
         this.load.audio('duck', './assets/rubberduck.wav');
         //the slaps clash
         this.load.audio('clash', './assets/slapclash.wav');
-
-
         //p1 locked in
         this.load.audio('select1', './assets/select1.wav');
         //p2 locked in
@@ -68,12 +66,14 @@ class Menu extends Phaser.Scene {
         //start button
         this.add.text(centerX, centerY-spacerY, ' Press \'Q\' to Start ', menuConfig).setOrigin(0.5);
         this.add.text(centerX, centerY, ' Press \'P\' for simple mode ', menuConfig).setOrigin(0.5);
-        this.add.text(centerX, 370, ' Press \'H\' to Learn How to Play ', menuConfig).setOrigin(0.5);
+        this.add.text(centerX, centerY+spacerY, ' Press \'H\' to Learn How to Play ', menuConfig).setOrigin(0.5);
+        this.add.text(centerX, centerY+spacerY*2, ' Press \'W\' to see who would do something like this ', menuConfig).setOrigin(0.5);
 
         //define keys
         keyQ = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.Q);
         keyP = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.P);
         keyH = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.H);
+        keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
 
     }
 
@@ -97,6 +97,9 @@ class Menu extends Phaser.Scene {
         }
         if (Phaser.Input.Keyboard.JustDown(keyH)) {
             this.scene.start("howScene");
+        }
+        if (Phaser.Input.Keyboard.JustDown(keyW)) {
+            this.scene.start("CreditsScene");
         }
 
         //IMPLEMENT COMPLEXITTY CHANGE HERE (if we get that far)

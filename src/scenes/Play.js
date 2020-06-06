@@ -76,7 +76,7 @@ class Play extends Phaser.Scene {
         this.goal = this.add.text(game.config.width/2 - 40, 10, "first to " + game.settings.firstTo, scoreConfig);
 
         //announcer display
-        this.announcer = this.add.text(game.config.width/2, game.config.height-spacerY, "PREPARE YOURSELF!", scoreConfig).setOrigin(0.5);
+        this.announcer = this.add.text(game.config.width/2, game.config.height-spacerY, "PREPARE YOUR FACE!", scoreConfig).setOrigin(0.5);
         //status display
         this.status = this.add.text(game.config.width/2, game.config.height-spacerY*2, "", scoreConfig).setOrigin(0.5);
 
@@ -125,7 +125,7 @@ class Play extends Phaser.Scene {
 
     //EVERYTHING below GOES IN A FAT WHILE LOOP THAT NEEDS TO GO HERE (since update is already looping this is NOT the move...
     //...use gameover boolean instead)
-    //while(this.p1.score < game.settings.firstTo && this.p2.score < game.settings.firstTo){}
+    //while(this.p1.score < game.settings.firstTo && this.p2.score < game.settings.firstTo){}(<- WRONG AF)
     if(!this.gameOver)
     {
 
@@ -182,12 +182,13 @@ class Play extends Phaser.Scene {
        //all 9 cases TESTED to activate correctly, so if there're bugs they're inside of the choice check if statements 
        //remove console.log() stuff later?
        //BETTER SOLUTION: make three methods in the player prefab, pass in opponent's choice to all, move if statements inside.
+       //EVEN BETTER SOLUTION: research state machines
 
        //extra if statement to try and improve preformance? (also makes the ending else statment work)
        if(this.p1Choice != null && this.p2Choice != null)
        {
 
-           //blocks going over max test(delete at end if ya want)
+           //blocks going over max test
            if(this.p1.blocks > game.settings.maxBlocks)
            {
                console.log("oh dear god has abandoned me p1 bs");
