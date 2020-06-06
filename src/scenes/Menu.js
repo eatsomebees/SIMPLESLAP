@@ -63,7 +63,7 @@ class Menu extends Phaser.Scene {
         let spacerY = 45;
 
         //title
-        this.add.text(centerX, centerY-spacerY*3, ' SLAP! ', titleConfig).setOrigin(0.5);
+        this.add.text(centerX, centerY-spacerY*3, ' simple SLAP! ', titleConfig).setOrigin(0.5);
 
         //start button
         this.add.text(centerX, centerY-spacerY, ' Press \'Q\' to Start ', menuConfig).setOrigin(0.5);
