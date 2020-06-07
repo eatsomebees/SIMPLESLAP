@@ -76,7 +76,7 @@ class Play extends Phaser.Scene {
         this.goal = this.add.text(game.config.width/2 - 40, 10, "first to " + game.settings.firstTo, scoreConfig);
 
         //announcer display
-        this.announcer = this.add.text(game.config.width/2, game.config.height-spacerY, "PREPARE YOUR FACE!", scoreConfig).setOrigin(0.5);
+        this.announcer = this.add.text(game.config.width/2, game.config.height-spacerY, " PREPARE YOUR FACE! ", scoreConfig).setOrigin(0.5);
         //status display
         this.status = this.add.text(game.config.width/2, game.config.height-spacerY*2, "", scoreConfig).setOrigin(0.5);
 

@@ -36,11 +36,12 @@ class How extends Phaser.Scene {
 
         this.pageNum = this.add.text(this.centerX, this.centerY-this.spacerY*5.5, ' Page: ' + (1 + this.sceneNum) + " ", this.HowConfig).setOrigin(0.5);
         
-        this.line1 = this.add.text(this.spacerX, this.centerY-this.spacerY*4, "" , this.HowConfig).setOrigin(0.5);
-        this.line2 = this.add.text(this.spacerX, this.centerY-this.spacerY*3, "" , this.HowConfig).setOrigin(0.5);
-        this.line3 = this.add.text(this.spacerX, this.centerY-this.spacerY*2, "" , this.HowConfig).setOrigin(0.5);
-        this.line4 = this.add.text(this.spacerX, this.centerY-this.spacerY, "" , this.HowConfig).setOrigin(0.5);
-        this.line5 = this.add.text(this.spacerX, this.centerY, "" , this.HowConfig).setOrigin(0.5);
+        this.line1 = this.add.text(this.spacerX, this.centerY-this.spacerY*4, "" , this.HowConfig);
+        this.line2 = this.add.text(this.spacerX, this.centerY-this.spacerY*3, "" , this.HowConfig);
+        this.line3 = this.add.text(this.spacerX, this.centerY-this.spacerY*2, "" , this.HowConfig);
+        this.line4 = this.add.text(this.spacerX, this.centerY-this.spacerY, "" , this.HowConfig);
+        this.line5 = this.add.text(this.spacerX, this.centerY, "" , this.HowConfig);
+        this.line6 = this.add.text(this.spacerX, this.centerY+this.spacerY, "" , this.HowConfig);
 
         //back to main menu button, next page and previous page buttons
         this.add.text(this.centerX, this.centerY+this.spacerY*5.5, ' Press \'M\' to return to menu ', this.HowConfig).setOrigin(0.5);
@@ -85,11 +86,12 @@ class How extends Phaser.Scene {
                 this.nextPage.text = " Press \'P\' -> ";
 
                 //lines
-                this.line1.text = "";
-                this.line2.text = "";
-                this.line3.text = "";
-                this.line4.text = "";
-                this.line5.text = "";
+                this.line1.text = " So you wanna get slap'n? It's pretty simple. ";
+                this.line2.text = " You, and your opponent, only have three options: ";
+                this.line3.text = " 1) Reload ";
+                this.line4.text = " 2) SLAP! ";
+                this.line5.text = " 3) Block ";
+                this.line6.text = "";
             }
             else if(this.sceneNum == 1)
             {
@@ -98,11 +100,12 @@ class How extends Phaser.Scene {
                 this.nextPage.text = " Press \'P\' -> ";
 
                 //lines
-                this.line1.text = "";
-                this.line2.text = "";
-                this.line3.text = "";
+                this.line1.text = " RELOAD: ";
+                this.line2.text = " - adds one to your slap count (unless it's full) ";
+                this.line3.text = " ... BUT, leaves you vulnerable to gettn SLAP!'d ";
                 this.line4.text = "";
                 this.line5.text = "";
+                this.line6.text = "";
 
             }
             else if(this.sceneNum == 2)
@@ -112,11 +115,12 @@ class How extends Phaser.Scene {
                 this.nextPage.text = " Press \'P\' -> ";
 
                 //lines
-                this.line1.text = "";
-                this.line2.text = "";
-                this.line3.text = "";
-                this.line4.text = "";
-                this.line5.text = "";
+                this.line1.text = " SLAP!: ";
+                this.line2.text = " - must have at least one slap loaded ";
+                this.line3.text = " - subtracts one from slap count ";
+                this.line4.text = " - get a point if other player is reloading ";
+                this.line5.text = " ... BUT, can be blocked ";
+                this.line6.text = "";
             }
             else if(this.sceneNum == 3)
             {
@@ -125,11 +129,12 @@ class How extends Phaser.Scene {
                 this.nextPage.text = " Press \'P\' -> ";
 
                 //lines
-                this.line1.text = "";
-                this.line2.text = "";
-                this.line3.text = "";
-                this.line4.text = "";
-                this.line5.text = "";
+                this.line1.text = " BLOCK: ";
+                this.line2.text = " - succecful (opponet chose to slap) -> negates the opponent's slap ";
+                this.line3.text = " - failed (opponet chose something else) -> adds one to block meter ";
+                this.line4.text = " - cannot block when block meter is full ";
+                this.line5.text = " - block meter resets to zero after a succecful block or reload ";
+                this.line6.text = "";
             }
             else if(this.sceneNum == 4)
             {
@@ -138,11 +143,12 @@ class How extends Phaser.Scene {
                 this.nextPage.text = " ... ";
 
                 //lines
-                this.line1.text = "";
-                this.line2.text = "";
+                this.line1.text = " That should be all you need to know. ";
+                this.line2.text = " The best way to understand your options is to play a few games! ";
                 this.line3.text = "";
-                this.line4.text = "";
-                this.line5.text = "";
+                this.line4.text = " MODES: ";
+                this.line5.text = " default: no timer, first to 3 ";
+                this.line6.text = " simple: the mindgame distilled ";
             }
             else{
 
