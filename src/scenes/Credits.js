@@ -15,7 +15,7 @@ class Credits extends Phaser.Scene {
         
         
         
-        //menu display
+        //Credits display
         let creditsConfig = {
             fontFamily: 'URW Chancery L, cursive',
             fontSize: '28px',
