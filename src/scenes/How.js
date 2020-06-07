@@ -35,11 +35,12 @@ class How extends Phaser.Scene {
 
 
         this.pageNum = this.add.text(this.centerX, this.centerY-this.spacerY*5.5, ' Page: ' + (1 + this.sceneNum) + " ", this.HowConfig).setOrigin(0.5);
-        this.line1 = this.add.text(this.spacerX, this.centerY-this.spacerY*4, " " , this.HowConfig).setOrigin(0.5);
-        this.line2 = this.add.text(this.spacerX, this.centerY-this.spacerY*3, " " , this.HowConfig).setOrigin(0.5);
-        this.line3 = this.add.text(this.spacerX, this.centerY-this.spacerY*2, " " , this.HowConfig).setOrigin(0.5);
-        this.line4 = this.add.text(this.spacerX, this.centerY-this.spacerY, " " , this.HowConfig).setOrigin(0.5);
-        this.line5 = this.add.text(this.spacerX, this.centerY, " " , this.HowConfig).setOrigin(0.5);
+        
+        this.line1 = this.add.text(this.spacerX, this.centerY-this.spacerY*4, "" , this.HowConfig).setOrigin(0.5);
+        this.line2 = this.add.text(this.spacerX, this.centerY-this.spacerY*3, "" , this.HowConfig).setOrigin(0.5);
+        this.line3 = this.add.text(this.spacerX, this.centerY-this.spacerY*2, "" , this.HowConfig).setOrigin(0.5);
+        this.line4 = this.add.text(this.spacerX, this.centerY-this.spacerY, "" , this.HowConfig).setOrigin(0.5);
+        this.line5 = this.add.text(this.spacerX, this.centerY, "" , this.HowConfig).setOrigin(0.5);
 
         //back to main menu button, next page and previous page buttons
         this.add.text(this.centerX, this.centerY+this.spacerY*5.5, ' Press \'M\' to return to menu ', this.HowConfig).setOrigin(0.5);
