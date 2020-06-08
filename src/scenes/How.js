@@ -23,7 +23,7 @@ class How extends Phaser.Scene {
         this.spacerY = 50;
         this.spacerX = 45;
         
-        this.helpPic1 = this.add.image(this.centerX, this.centerY+this.spacerY, 'howPage1').setScale(0.7, 0.7);
+        this.helpPic1 = this.add.image(this.centerX, this.centerY+this.spacerY+10, 'howPage1').setScale(0.7, 0.7);
         this.helpPic2 = this.add.image(this.centerX, this.centerY+this.spacerY, 'howPage2').setScale(0.7, 0.7);
         this.helpPic3 = this.add.image(this.centerX+this.spacerX, this.centerY+this.spacerY*2+10, 'howPage3').setScale(0.7, 0.7);
         this.helpPic4 = this.add.image(this.centerX, this.centerY+this.spacerY*3, 'howPage4').setScale(0.7, 0.7);
@@ -97,10 +97,11 @@ class How extends Phaser.Scene {
                 //lines
                 this.line1.text = " So you wanna get slap'n? It's pretty simple. ";
                 this.line2.text = " You and your opponent only have three options: ";
-                this.line3.text = " 1) Reload ";
-                this.line4.text = " 2) SLAP! ";
-                this.line5.text = " 3) Block ";
-                this.line6.text = "";
+                this.line3.text = " (once you choose, you're locked in until your opponent does) ";
+                this.line4.text = " 1) Reload ";
+                this.line5.text = " 2) SLAP! ";
+                this.line6.text = " 3) Block ";
+                
 
                 //pics
                 this.helpPic1.visible = true;
