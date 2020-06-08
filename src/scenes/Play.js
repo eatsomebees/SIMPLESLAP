@@ -76,13 +76,16 @@ class Play extends Phaser.Scene {
         this.goal = this.add.text(game.config.width/2 - 40, 10, "first to " + game.settings.firstTo, scoreConfig);
 
         //announcer display
-        this.announcer = this.add.text(game.config.width/2, game.config.height-spacerY, "PREPARE YOUR FACE!", scoreConfig).setOrigin(0.5);
+        this.announcer = this.add.text(game.config.width/2, game.config.height-spacerY, " PREPARE YOUR FACE! ", scoreConfig).setOrigin(0.5);
         //status display
         this.status = this.add.text(game.config.width/2, game.config.height-spacerY*2, "", scoreConfig).setOrigin(0.5);
 
         //win display
         this.winner = this.add.text(centerX, centerY-spacerY, "", scoreConfig).setOrigin(0.5);
         this.message = this.add.text(centerX, centerY, "", scoreConfig).setOrigin(0.5);
+
+        //return to menue display
+        this.add.text(115, 25, " Press \'M\' for menu ", scoreConfig).setOrigin(0.5);
 
 
         //define keys
@@ -94,6 +97,8 @@ class Play extends Phaser.Scene {
         keyP = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.P);
         keyO = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.O);
         keyL = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.L);
+        //menu button
+        keyM = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.M);
 
     }
 
@@ -111,14 +116,19 @@ class Play extends Phaser.Scene {
                 this.winner.text = "p2 wins!";
             }
 
-            this.message.text = "press \'Q\' to play again or \'P\' to return to menu.";
+            this.message.text = "press \'Q\' to play again or \'M\' to return to menu.";
             if (Phaser.Input.Keyboard.JustDown(keyQ)) {
                 this.scene.restart();
             }
-            if (Phaser.Input.Keyboard.JustDown(keyP)) {
+            if (Phaser.Input.Keyboard.JustDown(keyM)) {
                 this.scene.start("menuScene");
             }
         }
+
+    //quit and go to menu at any point
+    if (Phaser.Input.Keyboard.JustDown(keyM)) {
+        this.scene.start("menuScene");
+    }
     
 
     //logic for checking if game is over goes here
