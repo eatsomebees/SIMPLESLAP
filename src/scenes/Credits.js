@@ -15,7 +15,7 @@ class Credits extends Phaser.Scene {
         
         
         
-        //menu display
+        //Credits display
         let creditsConfig = {
             fontFamily: 'URW Chancery L, cursive',
             fontSize: '28px',
@@ -30,7 +30,7 @@ class Credits extends Phaser.Scene {
         }
 
             this.add.text(centerX, centerY-spacerY*5.5, ' Brought into being by: ', creditsConfig).setOrigin(0.5);
-            this.add.text(centerX, centerY-spacerY*4, ' William Gadd: (Internal logic and sound) ', creditsConfig).setOrigin(0.5);
+            this.add.text(centerX, centerY-spacerY*4, ' William Gadd: (Internal Logic and Sound) ', creditsConfig).setOrigin(0.5);
             this.add.text(centerX, centerY-spacerY*3, ' & ', creditsConfig).setOrigin(0.5);
             this.add.text(centerX, centerY-spacerY*2, ' Kenice Washington: (Art and Animation) ', creditsConfig).setOrigin(0.5);
 

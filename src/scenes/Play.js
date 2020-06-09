@@ -319,6 +319,9 @@ animation
         this.winner = this.add.text(centerX, centerY-spacerY, "", scoreConfig).setOrigin(0.5);
         this.message = this.add.text(centerX, centerY, "", scoreConfig).setOrigin(0.5);
 
+        //return to menue display
+        this.add.text(115, 25, " Press \'M\' for menu ", scoreConfig).setOrigin(0.5);
+
 
         //define keys
         //player 1
@@ -329,6 +332,8 @@ animation
         keyP = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.P);
         keyO = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.O);
         keyL = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.L);
+        //menu button
+        keyM = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.M);
 
     }
 
@@ -346,14 +351,19 @@ animation
                 this.winner.text = "p2 wins!";
             }
 
-            this.message.text = "press \'Q\' to play again or \'P\' to return to menu.";
+            this.message.text = "press \'Q\' to play again or \'M\' to return to menu.";
             if (Phaser.Input.Keyboard.JustDown(keyQ)) {
                 this.scene.restart();
             }
-            if (Phaser.Input.Keyboard.JustDown(keyP)) {
+            if (Phaser.Input.Keyboard.JustDown(keyM)) {
                 this.scene.start("menuScene");
             }
         }
+
+    //quit and go to menu at any point
+    if (Phaser.Input.Keyboard.JustDown(keyM)) {
+        this.scene.start("menuScene");
+    }
     
 
     //logic for checking if game is over goes here
@@ -586,7 +596,7 @@ animation
                    this.p1update = true;
 
                }
-    //    / //////////p1 fail, p2: succ -> inc p2's blocks, round resets
+               //p1 fail, p2: succ -> inc p2's blocks, round resets
                else if(!this.p1.canSlap() && this.p2.canBlock())
                {
                    console.log("p1 slapped w/ no slaps!");
@@ -1326,7 +1336,6 @@ animation
 
    
 }
-
 
 roundReset()
 {
