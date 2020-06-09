@@ -162,10 +162,10 @@ class How extends Phaser.Scene {
 
                 //lines
                 this.line1.text = " BLOCK: ";
-                this.line2.text = " - succecful (opponet chose to slap) -> negates the opponent's slap ";
+                this.line2.text = " - successful (opponet chose to slap) -> negates the opponent's slap ";
                 this.line3.text = " - failed (opponet chose something else) -> adds one to block meter ";
                 this.line4.text = " - cannot block when block meter is full ";
-                this.line5.text = " - block meter resets to zero after a succecful block or reload ";
+                this.line5.text = " - block meter resets to zero after a successful block or reload ";
                 this.line6.text = "";
 
                 //pics
