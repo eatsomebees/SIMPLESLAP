@@ -354,15 +354,18 @@ animation
             this.message.text = "press \'Q\' to play again or \'M\' to return to menu.";
             if (Phaser.Input.Keyboard.JustDown(keyQ)) {
                 this.scene.restart();
+              
             }
             if (Phaser.Input.Keyboard.JustDown(keyM)) {
                 this.scene.start("menuScene");
+                this.bgm.destroy();
             }
         }
 
     //quit and go to menu at any point
     if (Phaser.Input.Keyboard.JustDown(keyM)) {
         this.scene.start("menuScene");
+        this.bgm.destroy();
     }
     
 
