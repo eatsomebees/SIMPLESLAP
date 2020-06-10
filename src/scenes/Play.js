@@ -354,6 +354,7 @@ animation
             this.message.text = "press \'Q\' to play again or \'M\' to return to menu.";
             if (Phaser.Input.Keyboard.JustDown(keyQ)) {
                 this.scene.restart();
+                this.bgm.destroy();
               
             }
             if (Phaser.Input.Keyboard.JustDown(keyM)) {
